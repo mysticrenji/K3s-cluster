@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnetapp-dockerized
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dotnetapp-dockerized
+  template:
+    metadata:
+      labels:
+        app: dotnetapp-dockerized
+    spec:
+      containers:
+      - name: dotnetapp-dockerized
+        image: mysticrenji/k3s-test:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dotnetapp-dockerized
+  namespace: default
+spec:
+  ports:
+  - name: http
+    targetPort: 80
+    port: 80
+  selector:
+    app: dotnetapp-dockerized
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: dotnetapp-dockerized
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    traefik.frontend.rule.type: PathPrefixStrip
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: dotnetapp-dockerized
+          servicePort: http

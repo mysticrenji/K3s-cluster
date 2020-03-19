@@ -1,0 +1,68 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/pi/k3s/HelloWorldAspNetCore/HelloWorldAspNetCore.csproj": {}
+  },
+  "projects": {
+    "/home/pi/k3s/HelloWorldAspNetCore/HelloWorldAspNetCore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/pi/k3s/HelloWorldAspNetCore/HelloWorldAspNetCore.csproj",
+        "projectName": "HelloWorldAspNetCore",
+        "projectPath": "/home/pi/k3s/HelloWorldAspNetCore/HelloWorldAspNetCore.csproj",
+        "packagesPath": "/home/pi/.nuget/packages/",
+        "outputPath": "/home/pi/k3s/HelloWorldAspNetCore/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/home/pi/.Netcore/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/home/pi/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.1, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.2, )"
+            },
+            "Microsoft.NETCore.App": {
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}

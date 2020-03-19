@@ -1,0 +1,4 @@
+name: dotnetapp-dockerized
+image: mysticrenji/k3s-test:latest
+port: 80
+

@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k3s-go-app
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k3s-go-app
+  template:
+    metadata:
+      labels:
+        app: k3s-go-app
+    spec:
+      containers:
+      - name: k3s-go-app
+        image: mysticrenji/k3s-go-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: k3s-go-app
+  namespace: default
+spec:
+  ports:
+  - name: http
+    targetPort: 7000
+    port: 80
+  selector:
+    app: k3s-go-app
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: k3s-go-app
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    traefik.frontend.rule.type: PathPrefixStrip
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /k3s
+        backend:
+          serviceName: k3s-go-app
+          servicePort: http

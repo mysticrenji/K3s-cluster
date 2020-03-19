@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rancher-ui
+  labels:
+    app: rancher-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rancher-ui
+  template:
+    metadata:
+      labels:
+        app: rancher-ui
+    spec:
+      containers:
+      - name: rancher-ui
+        image: rancher/rancher
+        ports:
+        - containerPort: 90
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rancher-ui-service
+spec:
+  selector:
+    app: rancher-ui
+  ports:
+    - protocol: TCP
+      port: 90
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: rancher-ui-ingress
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: rancher-ui-service
+          servicePort: 90
+
