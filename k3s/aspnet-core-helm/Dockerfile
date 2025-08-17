@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.0-alpine as build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-alpine as build
 WORKDIR /app
 
 # copy csproj and restore
