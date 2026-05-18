@@ -21,7 +21,7 @@ RUN dotnet publish -c Release -o out
 #CMD ["dotnet", "out/HelloWorldAspNetCore.dll"]
 
 # Build runtime image
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 WORKDIR /app
 ENV ASPNETCORE_URLS http://*:6000
 COPY --from=build-env /app/out .
